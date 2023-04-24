@@ -9,7 +9,7 @@
                 document.querySelector('#submit').disabled = true;
 
                 document.querySelector('#task').onkeyup = () => {
-                    if(document.querySelector('#task').value.length > 0)
+                    if(document.querySelector('#task').value.length) //same as saying "if length>0"
                     {
                         document.querySelector('#submit').disabled = false;
                     }
