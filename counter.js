@@ -9,6 +9,8 @@ function count()
     counter++;
     document.querySelector('h1').innerHTML = counter;
     localStorage.setItem('counter', counter);
+    //This saves counter variable in the browser's local storage, so that
+    //when a user revisits the page in the browser the counter's value stays the same.
 }
 
 document.addEventListener('DOMContentLoaded', function() {
