@@ -3,6 +3,8 @@ if(!localStorage.getItem('counter'))
     localStorage.setItem('counter', 0);
 }
 
+//Note: 'document' object refers to whichever HTML page the JS code is embedded into
+
 function count()
 {
     let counter = localStorage.getItem('counter');
