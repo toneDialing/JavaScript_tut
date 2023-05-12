@@ -3,6 +3,7 @@
     <head>
         <title>Hello</title>
         <script>
+            //Ensure DOM is fully loaded before proceeding
             document.addEventListener('DOMContentLoaded', function() {
                 document.querySelector('form').onsubmit = function() {
                     const name = document.querySelector('#name').value;
