@@ -3,6 +3,7 @@
     <head>
         <title>Colors</title>
         <script>
+            //Changes font color dependent upon drop-down menu selection
             document.addEventListener('DOMContentLoaded', () => {
                 document.querySelector('select').onchange = function() {
                     document.querySelector('#hello').style.color = this.value;
