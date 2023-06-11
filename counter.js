@@ -1,3 +1,4 @@
+//Checks whether counter is already in local storage, and creates it if not
 if(!localStorage.getItem('counter'))
 {
     localStorage.setItem('counter', 0);
