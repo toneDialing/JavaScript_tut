@@ -5,6 +5,12 @@
         <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
         <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <style>
+            #app {
+                text-align: center;
+                font-family: sans-serif;
+            }
+        </style>
         <title>Counter</title>
     </head>
     <body>
@@ -16,14 +22,55 @@
                 // React.useState() returns a variable/object as the state and a function
                 // to alter the state. Names of variable/object/function are custom.
                 const [state, setState] = React.useState({
-                    num1: 1,
-                    num2: 2
+                    num1: Math.ceil(Math.random()*10),
+                    num2: Math.ceil(Math.random()*10),
+                    response: "",
+                    score: 0
                 });
+
+                function checkInputKey(event){
+                    if(event.key==="Enter"){
+                        const answer = parseInt(state.response);
+                        if (state.num1+state.num2 === answer)
+                        {
+                            //User got question right
+                            setState({
+                                num1: Math.ceil(Math.random()*10),
+                                num2: Math.ceil(Math.random()*10),
+                                response: "",
+                                score: state.score + 1 //increase score by 1
+                            });
+                        }
+                        else
+                        {
+                            //User got question wrong
+                            setState({
+                                ...state,
+                                response: "",
+                                score: state.score - 1 //decrease score by 1
+                                //Weird scoring system but whatever
+                            })
+                        }
+                    }
+                }
+
+                function updateResponse(event){
+                    setState({
+                        ...state,
+                        response: event.target.value
+                    });
+                }
 
                 return(
                     <div>
                         <div>{state.num1}+{state.num2}</div>
-                        <input />
+                        <input
+                            autoFocus={true}
+                            onKeyPress={checkInputKey}
+                            onChange={updateResponse}
+                            value={state.response}
+                        />
+                        <div>Score: {state.score}</div>
                     </div>
                 );
             }
